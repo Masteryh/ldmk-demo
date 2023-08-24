@@ -416,6 +416,7 @@ def main():
             top_left = np.minimum(thumb_pos, forefinger_pos)
             #cv2.rectangle(image, top_left, bottom_right, color, thickness=10)
             emoji_idx = hands_on_off_cnt % IMG_CNT
+            # 限定图片
             emoji_idx = 7
             distance = (get_distance_from_ldmks(hand[8], hand[4], X=X, Y=Y)).astype(np.int16)
             mid_pt = (get_mid_point_from_ldmks(hand[8], hand[4], X=X, Y=Y)).astype(np.int16)
@@ -438,7 +439,7 @@ def main():
             position = np.maximum(position, np.array([0, 0]))
             position = np.minimum(position, np.array([X, Y]))
 
-            text = 'Morning! CanCan!'
+            text = 'love you'
             image = cv2.flip(image, flipCode=1)
             position[0] = X - position[0]
             cv2.putText(image, text, position, cv2.FONT_HERSHEY_SIMPLEX, 1, color, thickness=2)
